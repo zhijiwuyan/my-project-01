@@ -1,0 +1,2165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>电商管理后台 API 接口文档</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>1. 电商管理后台 API 接口文档</h1>
+<h2>1.1. API V1 接口说明</h2>
+<ul>
+<li>接口基准地址：<code>http://127.0.0.1:8888/api/private/v1/</code></li>
+<li>服务端已开启 CORS 跨域支持</li>
+<li>API V1 认证统一使用 Token 认证</li>
+<li>需要授权的 API ，必须在请求头中使用 <code>Authorization</code> 字段提供 <code>token</code> 令牌</li>
+<li>使用 HTTP Status Code 标识状态</li>
+<li>数据返回格式统一使用 JSON</li>
+</ul>
+<h3>1.1.1. 支持的请求方法</h3>
+<ul>
+<li>GET（SELECT）：从服务器取出资源（一项或多项）。</li>
+<li>POST（CREATE）：在服务器新建一个资源。</li>
+<li>PUT（UPDATE）：在服务器更新资源（客户端提供改变后的完整资源）。</li>
+<li>PATCH（UPDATE）：在服务器更新资源（客户端提供改变的属性）。</li>
+<li>DELETE（DELETE）：从服务器删除资源。</li>
+<li>HEAD：获取资源的元数据。</li>
+<li>OPTIONS：获取信息，关于资源的哪些属性是客户端可以改变的。</li>
+</ul>
+<h3>1.1.2. 通用返回状态说明</h3>
+<p>| <em>状态码</em> | <em>含义</em>                | <em>说明</em>                                              |
+| -------- | --------------------- | --------------------------------------------------- |
+| 200      | OK                    | 请求成功                                            |
+| 201      | CREATED               | 创建成功                                            |
+| 204      | DELETED               | 删除成功                                            |
+| 400      | BAD REQUEST           | 请求的地址不存在或者包含不支持的参数                |
+| 401      | UNAUTHORIZED          | 未授权                                              |
+| 403      | FORBIDDEN             | 被禁止访问                                          |
+| 404      | NOT FOUND             | 请求的资源不存在                                    |
+| 422      | Unprocesable entity   | [POST/PUT/PATCH] 当创建一个对象时，发生一个验证错误 |
+| 500      | INTERNAL SERVER ERROR | 内部错误                                            |
+|          |                       |                                                     |</p>
+<hr />
+<h2>1.2. 登录</h2>
+<h3>1.2.1. 登录验证接口</h3>
+<ul>
+<li>请求路径：login</li>
+<li>请求方法：post</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名   | 参数说明 | 备注     |
+| -------- | -------- | -------- |
+| username | 用户名   | 不能为空 |
+| password | 密码     | 不能为空 |</p>
+<ul>
+<li>响应参数</li>
+</ul>
+<p>| 参数名   | 参数说明    | 备注            |
+| -------- | ----------- | --------------- |
+| id       | 用户 ID     |                 |
+| rid      | 用户角色 ID |                 |
+| username | 用户名      |                 |
+| mobile   | 手机号      |                 |
+| email    | 邮箱        |                 |
+| token    | 令牌        | 基于 jwt 的令牌 |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>json
+{
+    &quot;data&quot;: {
+        &quot;id&quot;: 500,
+        &quot;rid&quot;: 0,
+        &quot;username&quot;: &quot;admin&quot;,
+        &quot;mobile&quot;: &quot;123&quot;,
+        &quot;email&quot;: &quot;123@qq.com&quot;,
+        &quot;token&quot;: &quot;Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUwMCwicmlkIjowLCJpYXQiOjE1MTI1NDQyOTksImV4cCI6MTUxMjYzMDY5OX0.eGrsrvwHm-tPsO9r_pxHIQ5i5L1kX9RX444uwnRGaIM&quot;
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;登录成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<h2>1.3. 用户管理</h2>
+<h3>1.3.1. 用户数据列表</h3>
+<ul>
+<li>请求路径：users</li>
+<li>请求方法：get</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名   | 参数说明     | 备注     |
+| -------- | ------------ | -------- |
+| query    | 查询参数     | 可以为空 |
+| pagenum  | 当前页码     | 不能为空 |
+| pagesize | 每页显示条数 | 不能为空 |</p>
+<ul>
+<li>响应参数</li>
+</ul>
+<p>| 参数名    | 参数说明     | 备注 |
+| --------- | ------------ | ---- |
+| totalpage | 总记录数     |      |
+| pagenum   | 当前页码     |      |
+| users     | 用户数据集合 |      |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>json
+{
+    &quot;data&quot;: {
+        &quot;totalpage&quot;: 5,
+        &quot;pagenum&quot;: 4,
+        &quot;users&quot;: [
+            {
+                &quot;id&quot;: 25,
+                &quot;username&quot;: &quot;tige117&quot;,
+                &quot;mobile&quot;: &quot;18616358651&quot;,
+                &quot;type&quot;: 1,
+                &quot;email&quot;: &quot;tige112@163.com&quot;,
+                &quot;create_time&quot;: &quot;2017-11-09T20:36:26.000Z&quot;,
+                &quot;mg_state&quot;: true, // 当前用户的状态
+                &quot;role_name&quot;: &quot;炒鸡管理员&quot;
+            }
+        ]
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;获取成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<h3>1.3.2. 添加用户</h3>
+<ul>
+<li>请求路径：users</li>
+<li>请求方法：post</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名   | 参数说明 | 备注     |
+| -------- | -------- | -------- |
+| username | 用户名称 | 不能为空 |
+| password | 用户密码 | 不能为空 |
+| email    | 邮箱     | 可以为空 |
+| mobile   | 手机号   | 可以为空 |</p>
+<ul>
+<li>响应参数</li>
+</ul>
+<p>| 参数名   | 参数说明    | 备注 |
+| -------- | ----------- | ---- |
+| id       | 用户 ID     |      |
+| rid      | 用户角色 ID |      |
+| username | 用户名      |      |
+| mobile   | 手机号      |      |
+| email    | 邮箱        |      |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>json
+{
+    &quot;data&quot;: {
+        &quot;id&quot;: 28,
+        &quot;username&quot;: &quot;tige1200&quot;,
+        &quot;mobile&quot;: &quot;test&quot;,
+        &quot;type&quot;: 1,
+        &quot;openid&quot;: &quot;&quot;,
+        &quot;email&quot;: &quot;test@test.com&quot;,
+        &quot;create_time&quot;: &quot;2017-11-10T03:47:13.533Z&quot;,
+        &quot;modify_time&quot;: null,
+        &quot;is_delete&quot;: false,
+        &quot;is_active&quot;: false
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;用户创建成功&quot;,
+        &quot;status&quot;: 201
+    }
+}</code></p>
+<h3>1.3.3. 修改用户状态</h3>
+<ul>
+<li>请求路径：users/:uId/state/:type</li>
+<li>请求方法：put</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名 | 参数说明 | 备注                                        |
+| ------ | -------- | ------------------------------------------- |
+| uId    | 用户 ID  | 不能为空<code>携带在url中</code>                       |
+| type   | 用户状态 | 不能为空<code>携带在url中</code>，值为 true 或者 false |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>json
+{
+  &quot;data&quot;: {
+    &quot;id&quot;: 566,
+    &quot;rid&quot;: 30,
+    &quot;username&quot;: &quot;admin&quot;,
+    &quot;mobile&quot;: &quot;123456&quot;,
+    &quot;email&quot;: &quot;bb@itcast.com&quot;,
+    &quot;mg_state&quot;: 0
+  },
+  &quot;meta&quot;: {
+    &quot;msg&quot;: &quot;设置状态成功&quot;,
+    &quot;status&quot;: 200
+  }
+}</code></p>
+<h3>1.3.4. 根据 ID 查询用户信息</h3>
+<ul>
+<li>请求路径：users/:id</li>
+<li>请求方法：get</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名 | 参数说明 | 备注                  |
+| ------ | -------- | --------------------- |
+| id     | 用户 ID  | 不能为空<code>携带在url中</code> |</p>
+<ul>
+<li>响应参数</li>
+</ul>
+<p>| 参数名  | 参数说明 | 备注 |
+| ------- | -------- | ---- |
+| id      | 用户 ID  |      |
+| role_id | 角色 ID  |      |
+| mobile  | 手机号   |      |
+| email   | 邮箱     |      |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>json
+{
+    &quot;data&quot;: {
+        &quot;id&quot;: 503,
+        &quot;username&quot;: &quot;admin3&quot;,
+        &quot;role_id&quot;: 0,
+        &quot;mobile&quot;: &quot;00000&quot;,
+        &quot;email&quot;: &quot;new@new.com&quot;
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;查询成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<h3>1.3.5. 编辑用户提交</h3>
+<ul>
+<li>请求路径：users/:id</li>
+<li>请求方法：put</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名 | 参数说明 | 备注                        |
+| ------ | -------- | --------------------------- |
+| id     | 用户 id  | 不能为空 <code>参数是url参数:id</code> |
+| email  | 邮箱     | 可以为空                    |
+| mobile | 手机号   | 可以为空                    |</p>
+<ul>
+<li>响应参数</li>
+</ul>
+<p>| 参数名  | 参数说明 | 备注 |
+| ------- | -------- | ---- |
+| id      | 用户 ID  |      |
+| role_id | 角色 ID  |      |
+| mobile  | 手机号   |      |
+| email   | 邮箱     |      |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>json
+/* 200表示成功，500表示失败 */
+{
+    &quot;data&quot;: {
+        &quot;id&quot;: 503,
+        &quot;username&quot;: &quot;admin3&quot;,
+        &quot;role_id&quot;: 0,
+        &quot;mobile&quot;: &quot;111&quot;,
+        &quot;email&quot;: &quot;123@123.com&quot;
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;更新成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<h3>1.3.6. 删除单个用户</h3>
+<ul>
+<li>请求路径：users/:id</li>
+<li>请求方法：delete</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名 | 参数说明 | 备注                       |
+| ------ | -------- | -------------------------- |
+| id     | 用户 id  | 不能为空<code>参数是url参数:id</code> |</p>
+<ul>
+<li>响应参数</li>
+<li>响应数据</li>
+</ul>
+<p><code>json
+{
+    &quot;data&quot;: null,
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;删除成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<h3>1.3.7. 分配用户角色</h3>
+<ul>
+<li>请求路径：users/:id/role</li>
+<li>请求方法：put</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名 | 参数说明 | 备注                       |
+| ------ | -------- | -------------------------- |
+| id     | 用户 ID  | 不能为空<code>参数是url参数:id</code> |
+| rid    | 角色 id  | 不能为空<code>参数body参数</code>     |</p>
+<ul>
+<li>响应参数</li>
+</ul>
+<p>| 参数名  | 参数说明 | 备注 |
+| ------- | -------- | ---- |
+| id      | 用户 ID  |      |
+| role_id | 角色 ID  |      |
+| mobile  | 手机号   |      |
+| email   | 邮箱     |      |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>json
+{
+    &quot;data&quot;: {
+        &quot;id&quot;: 508,
+        &quot;rid&quot;: &quot;30&quot;,
+        &quot;username&quot;: &quot;asdf1&quot;,
+        &quot;mobile&quot;: &quot;123123&quot;,
+        &quot;email&quot;: &quot;adfsa@qq.com&quot;
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;设置角色成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<h2>1.4. 权限管理</h2>
+<h3>1.4.1. 所有权限列表</h3>
+<ul>
+<li>请求路径：rights/:type</li>
+<li>请求方法：get</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名 | 参数说明 | 备注                                                         |
+| ------ | -------- | ------------------------------------------------------------ |
+| type   | 类型     | 值 list 或 tree , list 列表显示权限, tree 树状显示权限,<code>参数是url参数:type</code> |</p>
+<ul>
+<li>响应参数</li>
+</ul>
+<p>| 参数名   | 参数说明     | 备注 |
+| -------- | ------------ | ---- |
+| id       | 权限 ID      |      |
+| authName | 权限说明     |      |
+| level    | 权限层级     |      |
+| pid      | 权限父 ID    |      |
+| path     | 对应访问路径 |      |</p>
+<ul>
+<li>响应数据 type=list</li>
+</ul>
+<p><code>json
+  {
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 101,
+            &quot;authName&quot;: &quot;商品管理&quot;,
+            &quot;level&quot;: &quot;0&quot;,
+            &quot;pid&quot;: 0,
+            &quot;path&quot;: null
+        },
+        {
+            &quot;id&quot;: 102,
+            &quot;authName&quot;: &quot;订单管理&quot;,
+            &quot;level&quot;: &quot;0&quot;,
+            &quot;pid&quot;: 0,
+            &quot;path&quot;: null
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;获取权限列表成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<p>type=tree</p>
+<p><code>json
+  {
+    data: [
+      {
+        id: 101,
+        authName: '商品管理',
+        path: null,
+        pid: 0,
+        children: [
+          {
+            id: 104,
+            authName: '商品列表',
+            path: null,
+            pid: 101,
+            children: [
+              {
+                id: 105,
+                authName: '添加商品',
+                path: null,
+                pid: '104,101'
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    meta: {
+      msg: '获取权限列表成功',
+      status: 200
+    }
+  }</code></p>
+<h3>1.4.2. 左侧菜单权限</h3>
+<ul>
+<li>请求路径：menus</li>
+<li>请求方法：get</li>
+<li>响应数据</li>
+</ul>
+<p><code>json
+{
+    &quot;data&quot;:
+        {
+            &quot;id&quot;: 101,
+            &quot;authName&quot;: &quot;商品管理&quot;,
+            &quot;path&quot;: null,
+            &quot;children&quot;: [
+                {
+                    &quot;id&quot;: 104,
+                    &quot;authName&quot;: &quot;商品列表&quot;,
+                    &quot;path&quot;: null,
+                    &quot;children&quot;: []
+                }
+            ]
+        }
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;获取菜单列表成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<h2>1.5. 角色管理</h2>
+<h3>1.5.1. 角色列表</h3>
+<ul>
+<li>
+<p>请求路径：roles</p>
+</li>
+<li>
+<p>请求方法：get</p>
+</li>
+<li>
+<p>响应数据说明</p>
+<ul>
+<li>
+<p>第一层为角色信息</p>
+</li>
+<li>
+<p>第二层开始为权限说明，权限一共有 3 层权限</p>
+</li>
+<li>最后一层权限，不包含 <code>children</code> 属性</li>
+</ul>
+</li>
+<li>
+<p>响应数据</p>
+</li>
+</ul>
+<p><code>json
+{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 30,
+            &quot;roleName&quot;: &quot;主管&quot;,
+            &quot;roleDesc&quot;: &quot;技术负责人&quot;,
+            &quot;children&quot;: [
+                {
+                    &quot;id&quot;: 101,
+                    &quot;authName&quot;: &quot;商品管理&quot;,
+                    &quot;path&quot;: null,
+                    &quot;children&quot;: [
+                        {
+                            &quot;id&quot;: 104,
+                            &quot;authName&quot;: &quot;商品列表&quot;,
+                            &quot;path&quot;: null,
+                            &quot;children&quot;: [
+                                {
+                                    &quot;id&quot;: 105,
+                                    &quot;authName&quot;: &quot;添加商品&quot;,
+                                    &quot;path&quot;: null
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;获取成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<h3>1.5.2. 添加角色</h3>
+<ul>
+<li>请求路径：roles</li>
+<li>请求方法：post</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名   | 参数说明 | 备注     |
+| -------- | -------- | -------- |
+| roleName | 角色名称 | 不能为空 |
+| roleDesc | 角色描述 | 可以为空 |</p>
+<ul>
+<li>响应参数</li>
+</ul>
+<p>| 参数名   | 参数说明 | 备注 |
+| -------- | -------- | ---- |
+| roleId   | 角色 ID  |      |
+| roleName | 角色名称 |      |
+| roleDesc | 角色描述 |      |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>json
+{
+    &quot;data&quot;: {
+        &quot;roleId&quot;: 40,
+        &quot;roleName&quot;: &quot;admin2&quot;,
+        &quot;roleDesc&quot;: &quot;admin2Desc&quot;
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;创建成功&quot;,
+        &quot;status&quot;: 201
+    }
+}</code></p>
+<h3>1.5.3. 根据 ID 查询角色</h3>
+<ul>
+<li>请求路径：roles/:id</li>
+<li>请求方法：get</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名 | 参数说明 | 备注                  |
+| ------ | -------- | --------------------- |
+| :id    | 角色 ID  | 不能为空<code>携带在url中</code> |</p>
+<ul>
+<li>响应参数</li>
+</ul>
+<p>| 参数名   | 参数说明 | 备注 |
+| -------- | -------- | ---- |
+| roleId   | 角色 ID  |      |
+| roleName | 角色名称 |      |
+| roleDesc | 角色描述 |      |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>json
+{
+    &quot;data&quot;: {
+        &quot;roleId&quot;: 31,
+        &quot;roleName&quot;: &quot;测试角色&quot;,
+        &quot;roleDesc&quot;: &quot;测试负责人&quot;
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;获取成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<h3>1.5.4. 编辑提交角色</h3>
+<ul>
+<li>请求路径：roles/:id</li>
+<li>请求方法：put</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名   | 参数说明 | 备注                  |
+| -------- | -------- | --------------------- |
+| :id      | 角色 ID  | 不能为空<code>携带在url中</code> |
+| roleName | 角色名称 | 不能为空              |
+| roleDesc | 角色描述 | 可以为空              |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>json
+{
+    &quot;data&quot;: {
+        &quot;roleId&quot;: 31,
+        &quot;roleName&quot;: &quot;测试角色&quot;,
+        &quot;roleDesc&quot;: &quot;测试角色描述&quot;
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;获取成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<h3>1.5.5. 删除角色</h3>
+<ul>
+<li>请求路径：roles/:id</li>
+<li>请求方法：delete</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名 | 参数说明 | 备注                  |
+| ------ | -------- | --------------------- |
+| :id    | 角色 ID  | 不能为空<code>携带在url中</code> |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>json
+{
+    &quot;data&quot;: null,
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;删除成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<h3>1.5.6. 角色授权</h3>
+<ul>
+<li>请求路径：roles/:roleId/rights</li>
+<li>请求方法：post</li>
+<li>请求参数：通过 <code>请求体</code> 发送给后端</li>
+</ul>
+<p>| 参数名  | 参数说明               | 备注                                                         |
+| ------- | ---------------------- | ------------------------------------------------------------ |
+| :roleId | 角色 ID                | 不能为空<code>携带在url中</code>                                        |
+| rids    | 权限 ID 列表（字符串） | 以 <code>,</code> 分割的权限 ID 列表（获取所有被选中、叶子节点的key和半选中节点的key, 包括 1，2，3级节点） |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>json
+{
+    &quot;data&quot;: null,
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;更新成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<h3>1.5.7. 删除角色指定权限</h3>
+<ul>
+<li>
+<p>请求路径：roles/:roleId/rights/:rightId</p>
+</li>
+<li>
+<p>请求方法：delete</p>
+</li>
+<li>
+<p>请求参数</p>
+</li>
+</ul>
+<p>| 参数名   | 参数说明 | 备注                  |
+  | -------- | -------- | --------------------- |
+  | :roleId  | 角色 ID  | 不能为空<code>携带在url中</code> |
+  | :rightId | 权限 ID  | 不能为空<code>携带在url中</code> |</p>
+<ul>
+<li>
+<p>响应数据说明 </p>
+<ul>
+<li>返回的data, 是当前角色下最新的权限数据</li>
+</ul>
+</li>
+<li>
+<p>响应数据</p>
+</li>
+</ul>
+<p><code>json
+  {
+      &quot;data&quot;: [
+          {
+              &quot;id&quot;: 101,
+              &quot;authName&quot;: &quot;商品管理&quot;,
+              &quot;path&quot;: null,
+              &quot;children&quot;: [
+                  {
+                      &quot;id&quot;: 104,
+                      &quot;authName&quot;: &quot;商品列表&quot;,
+                      &quot;path&quot;: null,
+                      &quot;children&quot;: [
+                          {
+                              &quot;id&quot;: 105,
+                              &quot;authName&quot;: &quot;添加商品&quot;,
+                              &quot;path&quot;: null
+                          },
+                          {
+                              &quot;id&quot;: 116,
+                              &quot;authName&quot;: &quot;修改&quot;,
+                              &quot;path&quot;: null
+                          }
+                      ]
+                  }
+              ]
+          }
+      ],
+      &quot;meta&quot;: {
+          &quot;msg&quot;: &quot;取消权限成功&quot;,
+          &quot;status&quot;: 200
+      }
+  }</code></p>
+<h2>1.6. 商品分类管理</h2>
+<h3>1.6.1. 商品分类数据列表</h3>
+<ul>
+<li>请求路径：categories</li>
+<li>请求方法：get</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名   | 参数说明           | 备注                                                         |
+| -------- | ------------------ | ------------------------------------------------------------ |
+| type     | [1,2,3]            | 值：1，2，3 分别表示显示一层二层三层分类列表<br />【可选参数】如果不传递，则默认获取所有级别的分类 |
+| pagenum  | 当前页码值         | 【可选参数】如果不传递，则默认获取所有分类                   |
+| pagesize | 每页显示多少条数据 | 【可选参数】如果不传递，则默认获取所有分类                   |</p>
+<ul>
+<li>响应参数</li>
+</ul>
+<p>| 参数名    | 参数说明     | 备注 |
+| --------- | ------------ | ---- |
+| cat<em>id    | 分类 ID      |      |
+| cat</em>name  | 分类名称     |      |
+| cat<em>pid   | 分类父 ID    |      |
+| cat</em>level | 分类当前层级 |      |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>json
+{
+    &quot;data&quot;: [
+        {
+            &quot;cat_id&quot;: 1,
+            &quot;cat_name&quot;: &quot;大家电&quot;,
+            &quot;cat_pid&quot;: 0,
+            &quot;cat_level&quot;: 0,
+            &quot;cat_deleted&quot;: false,
+            &quot;children&quot;: [
+                {
+                    &quot;cat_id&quot;: 3,
+                    &quot;cat_name&quot;: &quot;电视&quot;,
+                    &quot;cat_pid&quot;: 1,
+                    &quot;cat_level&quot;: 1,
+                    &quot;cat_deleted&quot;: false,
+                    &quot;children&quot;: [
+                        {
+                            &quot;cat_id&quot;: 6,
+                            &quot;cat_name&quot;: &quot;曲面电视&quot;,
+                            &quot;cat_pid&quot;: 3,
+                            &quot;cat_level&quot;: 2,
+                            &quot;cat_deleted&quot;: false
+                        },
+                        {
+                            &quot;cat_id&quot;: 7,
+                            &quot;cat_name&quot;: &quot;海信&quot;,
+                            &quot;cat_pid&quot;: 3,
+                            &quot;cat_level&quot;: 2,
+                            &quot;cat_deleted&quot;: false
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;获取成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<h3>1.6.2. 添加分类</h3>
+<ul>
+<li>请求路径：categories</li>
+<li>请求方法：post</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名    | 参数说明  | 备注                                                        |
+| --------- | --------- | ----------------------------------------------------------- |
+| cat<em>pid   | 分类父 ID | 不能为空，如果要添加1级分类，则父分类Id应该设置为  <code>0</code>      |
+| cat</em>name  | 分类名称  | 不能为空                                                    |
+| cat_level | 分类层级  | 不能为空，<code>0</code>表示一级分类；<code>1</code>表示二级分类；<code>2</code>表示三级分类 |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>json
+{
+    &quot;data&quot;: {
+        &quot;cat_id&quot;: 62,
+        &quot;cat_name&quot;: &quot;相框&quot;,
+        &quot;cat_pid&quot;: &quot;1&quot;,
+        &quot;cat_level&quot;: &quot;1&quot;
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;创建成功&quot;,
+        &quot;status&quot;: 201
+    }
+}</code></p>
+<h3>1.6.3. 根据 id 查询分类</h3>
+<ul>
+<li>请求路径：categories/:id</li>
+<li>请求方法：get</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名 | 参数说明 | 备注                  |
+| ------ | -------- | --------------------- |
+| :id    | 分类 ID  | 不能为空<code>携带在url中</code> |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>{
+    &quot;data&quot;: {
+        &quot;cat_id&quot;: 3,
+        &quot;cat_name&quot;: &quot;厨卫电器&quot;,
+        &quot;cat_pid&quot;: 0,
+        &quot;cat_level&quot;: 0
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;获取成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<h3>1.6.4. 编辑提交分类</h3>
+<ul>
+<li>请求路径：categories/:id</li>
+<li>请求方法：put</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名   | 参数说明 | 备注                             |
+| -------- | -------- | -------------------------------- |
+| :id      | 分类 ID  | 不能为空<code>携带在url中</code>            |
+| cat_name | 分类名称 | 不能为空【此参数，放到请求体中】 |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>{
+    &quot;data&quot;: {
+        &quot;cat_id&quot;: 22,
+        &quot;cat_name&quot;: &quot;自拍杆&quot;,
+        &quot;cat_pid&quot;: 7,
+        &quot;cat_level&quot;: 2
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;更新成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<h3>1.6.5. 删除分类</h3>
+<ul>
+<li>请求路径：categories/:id</li>
+<li>请求方法：delete</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名 | 参数说明 | 备注                  |
+| ------ | -------- | --------------------- |
+| :id    | 分类 ID  | 不能为空<code>携带在url中</code> |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>{
+    &quot;data&quot;: null,
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;删除成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<h2>1.7. 分类参数管理</h2>
+<h3>1.7.1. 参数列表</h3>
+<ul>
+<li>请求路径：categories/:id/attributes</li>
+<li>请求方法：get</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名 | 参数说明    | 备注                                                      |
+| ------ | ----------- | --------------------------------------------------------- |
+| :id    | 分类 ID     | 不能为空<code>携带在url中</code>                                     |
+| sel    | [only,many] | 不能为空,通过 only 或 many 来获取分类静态参数还是动态参数 |</p>
+<ul>
+<li>响应参数</li>
+</ul>
+<p>| 参数名     | 参数说明                                       | 备注 |
+| ---------- | ---------------------------------------------- | ---- |
+| attr<em>id    | 分类参数 ID                                    |      |
+| attr</em>name  | 分类参数名称                                   |      |
+| cat<em>id     | 分类参数所属分类                               |      |
+| attr<em>sel   | only:输入框(唯一) many:后台下拉列表/前台单选框 |      |
+| attr</em>write | manual:手工录入 list:从列表选择                |      |
+| attr</em>vals  | 如果 attr_write:list,那么有值，该值以逗号分隔  |      |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>{
+    &quot;data&quot;: [
+        {
+            &quot;attr_id&quot;: 1,
+            &quot;attr_name&quot;: &quot;cpu&quot;,
+            &quot;cat_id&quot;: 22,
+            &quot;attr_sel&quot;: &quot;only&quot;,
+            &quot;attr_write&quot;: &quot;manual&quot;,
+            &quot;attr_vals&quot;: &quot;ffff&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;获取成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<h3>1.7.2. 添加动态参数或者静态属性</h3>
+<ul>
+<li>请求路径：categories/:id/attributes</li>
+<li>请求方法：post</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名    | 参数说明                                   | 备注                  |
+| --------- | ------------------------------------------ | --------------------- |
+| :id       | 分类 ID                                    | 不能为空<code>携带在url中</code> |
+| attr<em>name | 参数名称                                   | 不能为空              |
+| attr</em>sel  | [only,many]                                | 不能为空              |
+| attr_vals | 如果是 many 就需要填写值的选项，以逗号分隔 | 【可选参数】          |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>{
+    &quot;data&quot;: {
+        &quot;attr_id&quot;: 44,
+        &quot;attr_name&quot;: &quot;测试参数&quot;,
+        &quot;cat_id&quot;: &quot;1&quot;,
+        &quot;attr_sel&quot;: &quot;many&quot;,
+        &quot;attr_write&quot;: &quot;list&quot;,
+        &quot;attr_vals&quot;: &quot;a,b,c&quot;
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;创建成功&quot;,
+        &quot;status&quot;: 201
+    }
+}</code></p>
+<h3>1.7.3. 删除参数</h3>
+<ul>
+<li>请求路径： categories/:id/attributes/:attrid</li>
+<li>请求方法：delete</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名  | 参数说明 | 备注                  |
+| ------- | -------- | --------------------- |
+| :id     | 分类 ID  | 不能为空<code>携带在url中</code> |
+| :attrid | 参数 ID  | 不能为空<code>携带在url中</code> |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>{
+    &quot;data&quot;: null,
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;删除成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<h3>1.7.4. 根据 ID 查询参数</h3>
+<ul>
+<li>请求路径：categories/:id/attributes/:attrId</li>
+<li>请求方法：get</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名    | 参数说明                                   | 备注                  |
+| --------- | ------------------------------------------ | --------------------- |
+| :id       | 分类 ID                                    | 不能为空<code>携带在url中</code> |
+| :attrId   | 属性 ID                                    | 不能为空<code>携带在url中</code> |
+| attr<em>sel  | [only,many]                                | 不能为空              |
+| attr</em>vals | 如果是 many 就需要填写值的选项，以逗号分隔 |                       |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>{
+    &quot;data&quot;: {
+        &quot;attr_id&quot;: 1,
+        &quot;attr_name&quot;: &quot;cpu&quot;,
+        &quot;cat_id&quot;: 22,
+        &quot;attr_sel&quot;: &quot;only&quot;,
+        &quot;attr_write&quot;: &quot;manual&quot;,
+        &quot;attr_vals&quot;: &quot;ffff&quot;
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;获取成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<h3>1.7.5. 编辑提交参数</h3>
+<ul>
+<li>请求路径：categories/:id/attributes/:attrId</li>
+<li>请求方法：put</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名    | 参数说明               | 备注                       |
+| --------- | ---------------------- | -------------------------- |
+| :id       | 分类 ID                | 不能为空<code>携带在url中</code>      |
+| :attrId   | 属性 ID                | 不能为空<code>携带在url中</code>      |
+| attr<em>name | 新属性的名字           | 不能为空，携带在<code>请求体</code>中 |
+| attr</em>sel  | 属性的类型[many或only] | 不能为空，携带在<code>请求体</code>中 |
+| attr_vals | 参数的属性值           | 可选参数，携带在<code>请求体</code>中 |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>{
+    &quot;data&quot;: {
+        &quot;attr_id&quot;: 9,
+        &quot;attr_name&quot;: &quot;测试更新&quot;,
+        &quot;cat_id&quot;: &quot;43&quot;,
+        &quot;attr_sel&quot;: &quot;only&quot;,
+        &quot;attr_write&quot;: &quot;manual&quot;,
+        &quot;attr_vals&quot;: &quot;abc&quot;
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;更新成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<h2>1.8. 商品管理</h2>
+<h3>1.8.1. 商品列表数据</h3>
+<ul>
+<li>请求路径：goods</li>
+<li>请求方法：get</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名   | 参数说明     | 备注     |
+| -------- | ------------ | -------- |
+| query    | 查询参数     | 可以为空 |
+| pagenum  | 当前页码     | 不能为空 |
+| pagesize | 每页显示条数 | 不能为空 |</p>
+<ul>
+<li>响应参数</li>
+</ul>
+<p>| 参数名       | 参数说明     | 备注                                   |
+| ------------ | ------------ | -------------------------------------- |
+| total        | 总共商品条数 |                                        |
+| pagenum      | 当前商品页数 |                                        |
+| goods<em>id     | 商品 ID      |                                        |
+| goods</em>name   | 商品名称     |                                        |
+| goods<em>price  | 价格         |                                        |
+| goods<em>number | 数量         |                                        |
+| goods</em>weight | 重量         | 不能为空                               |
+| goods</em>state  | 商品状态     | 商品状态 0: 未通过 1: 审核中 2: 已审核 |
+| add<em>time     | 添加时间     |                                        |
+| upd</em>time     | 更新时间     |                                        |
+| hot<em>mumber   | 热销品数量   |                                        |
+| is</em>promote   | 是否是热销品 |                                        |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>{
+    &quot;data&quot;: {
+        &quot;total&quot;: 50,
+        &quot;pagenum&quot;: &quot;1&quot;,
+        &quot;goods&quot;: [
+            {
+                &quot;goods_id&quot;: 144,
+                &quot;goods_name&quot;: &quot;asfdsd&quot;,
+                &quot;goods_price&quot;: 1,
+                &quot;goods_number&quot;: 1,
+                &quot;goods_weight&quot;: 1,
+                &quot;goods_state&quot;: null,
+                &quot;add_time&quot;: 1512954923,
+                &quot;upd_time&quot;: 1512954923,
+                &quot;hot_mumber&quot;: 0,
+                &quot;is_promote&quot;: false
+            }
+        ]
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;获取成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<h3>1.8.2. 添加商品</h3>
+<ul>
+<li>请求路径：goods</li>
+<li>请求方法：post</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名          | 参数说明                                          | 备注     |
+| --------------- | ------------------------------------------------- | -------- |
+| goods<em>name      | 商品名称                                          | 不能为空 |
+| goods</em>cat       | 以为','分割的分类列表                             | 不能为空 |
+| goods<em>price     | 价格                                              | 不能为空 |
+| goods<em>number    | 数量                                              | 不能为空 |
+| goods</em>weight    | 重量                                              | 不能为空 |
+| goods</em>introduce | 介绍                                              | 可以为空 |
+| pics            | 上传的图片临时路径（对象）                        | 可以为空 |
+| attrs           | 商品的参数（数组），包含 <code>动态参数</code> 和 <code>静态属性</code> | 可以为空 |</p>
+<ul>
+<li>请求数据</li>
+</ul>
+<p><code>json
+{
+  &quot;goods_name&quot;:&quot;test_goods_name2&quot;,
+  &quot;goods_cat&quot;: &quot;1,2,3&quot;,
+  &quot;goods_price&quot;:20,
+  &quot;goods_number&quot;:30,
+  &quot;goods_weight&quot;:40,
+  &quot;goods_introduce&quot;:&quot;abc&quot;,
+  &quot;pics&quot;:[
+    {&quot;pic&quot;:&quot;/tmp_uploads/30f08d52c551ecb447277eae232304b8&quot;}
+    ],
+  &quot;attrs&quot;:[
+    {
+      &quot;attr_id&quot;:15,
+      &quot;attr_value&quot;:&quot;ddd&quot;
+    },
+    {
+      &quot;attr_id&quot;:15,
+      &quot;attr_value&quot;:&quot;eee&quot;
+    }
+    ]
+}</code></p>
+<ul>
+<li>响应参数</li>
+</ul>
+<p>| 参数名       | 参数说明                   | 备注                                                         |
+| ------------ | -------------------------- | ------------------------------------------------------------ |
+| total        | 总共商品条数               |                                                              |
+| pagenum      | 当前商品页数               |                                                              |
+| goods<em>id     | 商品 ID                    |                                                              |
+| goods</em>cat    | 以为','分割的分类列表      |                                                              |
+| goods<em>name   | 商品名称                   |                                                              |
+| goods<em>price  | 价格                       |                                                              |
+| goods</em>number | 数量                       |                                                              |
+| goods</em>weight | 重量                       | 不能为空                                                     |
+| goods<em>state  | 商品状态                   | 商品状态 0: 未通过 1: 审核中 2: 已审核                       |
+| add</em>time     | 添加时间                   |                                                              |
+| upd<em>time     | 更新时间                   |                                                              |
+| hot<em>mumber   | 热销品数量                 |                                                              |
+| is</em>promote   | 是否是热销品               |                                                              |
+| pics         | 上传的图片临时路径（对象） | pics<em>id:图片 ID,goods<em>id:商品 ID,pics</em>big:大图,pics</em>mid:中图,pics<em>sma:小图 |
+| attrs        | 商品的参数（数组）         | goods</em>id:商品 ID,attr</em>value:当前商品的参数值,add<em>price:浮动价格,attr</em>vals:预定义的参数值,attr_sel:手动输入，还是单选, |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>json
+{
+    &quot;data&quot;: {
+        &quot;goods_id&quot;: 145,
+        &quot;goods_name&quot;: &quot;test_goods_name2&quot;,
+        &quot;goods_price&quot;: 20,
+        &quot;cat_id&quot;: 1,
+        &quot;goods_number&quot;: 30,
+        &quot;goods_weight&quot;: 40,
+        &quot;goods_introduce&quot;: &quot;abc&quot;,
+        &quot;goods_big_logo&quot;: &quot;&quot;,
+        &quot;goods_small_logo&quot;: &quot;&quot;,
+        &quot;goods_state&quot;: 1,
+        &quot;add_time&quot;: 1512962370,
+        &quot;upd_time&quot;: 1512962370,
+        &quot;hot_mumber&quot;: 0,
+        &quot;is_promote&quot;: false,
+        &quot;pics&quot;: [
+            {
+                &quot;pics_id&quot;: 397,
+                &quot;goods_id&quot;: 145,
+                &quot;pics_big&quot;: &quot;uploads/goodspics/big_30f08d52c551ecb447277eae232304b8&quot;,
+                &quot;pics_mid&quot;: &quot;uploads/goodspics/mid_30f08d52c551ecb447277eae232304b8&quot;,
+                &quot;pics_sma&quot;: &quot;uploads/goodspics/sma_30f08d52c551ecb447277eae232304b8&quot;
+            }
+        ],
+        &quot;attrs&quot;: [
+            {
+                &quot;goods_id&quot;: 145,
+                &quot;attr_id&quot;: 15,
+                &quot;attr_value&quot;: &quot;ddd&quot;,
+                &quot;add_price&quot;: null,
+                &quot;attr_name&quot;: &quot;fffffff&quot;,
+                &quot;attr_sel&quot;: &quot;many&quot;,
+                &quot;attr_write&quot;: &quot;list&quot;,
+                &quot;attr_vals&quot;: &quot;&quot;
+            },
+            {
+                &quot;goods_id&quot;: 145,
+                &quot;attr_id&quot;: 15,
+                &quot;attr_value&quot;: &quot;eee&quot;,
+                &quot;add_price&quot;: null,
+                &quot;attr_name&quot;: &quot;fffffff&quot;,
+                &quot;attr_sel&quot;: &quot;many&quot;,
+                &quot;attr_write&quot;: &quot;list&quot;,
+                &quot;attr_vals&quot;: &quot;&quot;
+            }
+        ]
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;创建商品成功&quot;,
+        &quot;status&quot;: 201
+    }
+}</code></p>
+<h3>1.8.3. 根据 ID 查询商品</h3>
+<ul>
+<li>请求路径：goods/:id</li>
+<li>请求方法：get</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名 | 参数说明 | 备注                  |
+| ------ | -------- | --------------------- |
+| id     | 商品 ID  | 不能为空<code>携带在url中</code> |</p>
+<ul>
+<li>响应参数</li>
+</ul>
+<p>| 参数名       | 参数说明                   | 备注                                                         |
+| ------------ | -------------------------- | ------------------------------------------------------------ |
+| total        | 总共商品条数               |                                                              |
+| pagenum      | 当前商品页数               |                                                              |
+| goods<em>id     | 商品 ID                    |                                                              |
+| goods</em>name   | 商品名称                   |                                                              |
+| goods<em>price  | 价格                       |                                                              |
+| goods<em>number | 数量                       |                                                              |
+| goods</em>weight | 重量                       | 不能为空                                                     |
+| goods</em>state  | 商品状态                   | 商品状态 0: 未通过 1: 审核中 2: 已审核                       |
+| add<em>time     | 添加时间                   |                                                              |
+| upd</em>time     | 更新时间                   |                                                              |
+| hot<em>mumber   | 热销品数量                 |                                                              |
+| is<em>promote   | 是否是热销品               |                                                              |
+| pics         | 上传的图片临时路径（对象） | pics</em>id:图片 ID,goods<em>id:商品 ID,pics<em>big:大图,pics</em>mid:中图,pics</em>sma:小图 |
+| attrs        | 商品的参数（数组）         | goods<em>id:商品 ID,attr</em>value:当前商品的参数值,add</em>price:浮动价格,attr<em>vals:预定义的参数值,attr</em>sel:手动输入，还是单选, |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>{
+    &quot;data&quot;: {
+        &quot;goods_id&quot;: 145,
+        &quot;goods_name&quot;: &quot;test_goods_name2&quot;,
+        &quot;goods_price&quot;: 20,
+        &quot;goods_number&quot;: 30,
+        &quot;goods_weight&quot;: 40,
+        &quot;goods_introduce&quot;: &quot;abc&quot;,
+        &quot;goods_big_logo&quot;: &quot;&quot;,
+        &quot;goods_small_logo&quot;: &quot;&quot;,
+        &quot;goods_state&quot;: 1,
+        &quot;add_time&quot;: 1512962370,
+        &quot;upd_time&quot;: 1512962370,
+        &quot;hot_mumber&quot;: 0,
+        &quot;is_promote&quot;: false,
+        &quot;pics&quot;: [
+            {
+                &quot;pics_id&quot;: 397,
+                &quot;goods_id&quot;: 145,
+                &quot;pics_big&quot;: &quot;uploads/goodspics/big_30f08d52c551ecb447277eae232304b8&quot;,
+                &quot;pics_mid&quot;: &quot;uploads/goodspics/mid_30f08d52c551ecb447277eae232304b8&quot;,
+                &quot;pics_sma&quot;: &quot;uploads/goodspics/sma_30f08d52c551ecb447277eae232304b8&quot;
+            }
+        ],
+        &quot;attrs&quot;: [
+            {
+                &quot;goods_id&quot;: 145,
+                &quot;attr_id&quot;: 15,
+                &quot;attr_value&quot;: &quot;ddd&quot;,
+                &quot;add_price&quot;: null,
+                &quot;attr_name&quot;: &quot;fffffff&quot;,
+                &quot;attr_sel&quot;: &quot;many&quot;,
+                &quot;attr_write&quot;: &quot;list&quot;,
+                &quot;attr_vals&quot;: &quot;&quot;
+            },
+            {
+                &quot;goods_id&quot;: 145,
+                &quot;attr_id&quot;: 15,
+                &quot;attr_value&quot;: &quot;eee&quot;,
+                &quot;add_price&quot;: null,
+                &quot;attr_name&quot;: &quot;fffffff&quot;,
+                &quot;attr_sel&quot;: &quot;many&quot;,
+                &quot;attr_write&quot;: &quot;list&quot;,
+                &quot;attr_vals&quot;: &quot;&quot;
+            }
+        ]
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;创建商品成功&quot;,
+        &quot;status&quot;: 201
+    }
+}</code></p>
+<h3>1.8.4. 编辑提交商品</h3>
+<ul>
+<li>请求路径：goods/:id</li>
+<li>请求方法：put</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名          | 参数说明                   | 备注                  |
+| --------------- | -------------------------- | --------------------- |
+| id              | 商品 ID                    | 不能为空<code>携带在url中</code> |
+| goods<em>name      | 商品名称                   | 不能为空              |
+| goods</em>price     | 价格                       | 不能为空              |
+| goods_number    | 数量                       | 不能为空              |
+| goods<em>weight    | 重量                       | 不能为空              |
+| goods</em>introduce | 介绍                       | 可以为空              |
+| pics            | 上传的图片临时路径（对象） | 可以为空              |
+| attrs           | 商品的参数（数组）         | 可以为空              |</p>
+<ul>
+<li>请求数据</li>
+</ul>
+<p><code>{
+  &quot;goods_name&quot;:&quot;test_goods_name2&quot;,
+  &quot;goods_price&quot;:20,
+  &quot;goods_number&quot;:30,
+  &quot;goods_weight&quot;:40,
+  &quot;goods_introduce&quot;:&quot;abc&quot;,
+  &quot;pics&quot;:[
+    {&quot;pic&quot;:&quot;/tmp_uploads/30f08d52c551ecb447277eae232304b8&quot;}
+    ],
+  &quot;attrs&quot;:[
+    {
+      &quot;attr_id&quot;:15,
+      &quot;attr_value&quot;:&quot;ddd&quot;
+    },
+    {
+      &quot;attr_id&quot;:15,
+      &quot;attr_value&quot;:&quot;eee&quot;
+    }
+    ]
+}</code></p>
+<ul>
+<li>响应参数</li>
+</ul>
+<p>| 参数名       | 参数说明                   | 备注                                                         |
+| ------------ | -------------------------- | ------------------------------------------------------------ |
+| total        | 总共商品条数               |                                                              |
+| pagenum      | 当前商品页数               |                                                              |
+| goods<em>id     | 商品 ID                    |                                                              |
+| goods</em>name   | 商品名称                   |                                                              |
+| goods<em>price  | 价格                       |                                                              |
+| goods<em>number | 数量                       |                                                              |
+| goods</em>weight | 重量                       | 不能为空                                                     |
+| goods</em>state  | 商品状态                   | 商品状态 0: 未通过 1: 审核中 2: 已审核                       |
+| add<em>time     | 添加时间                   |                                                              |
+| upd</em>time     | 更新时间                   |                                                              |
+| hot<em>mumber   | 热销品数量                 |                                                              |
+| is<em>promote   | 是否是热销品               |                                                              |
+| pics         | 上传的图片临时路径（对象） | pics</em>id:图片 ID,goods<em>id:商品 ID,pics<em>big:大图,pics</em>mid:中图,pics</em>sma:小图 |
+| attrs        | 商品的参数（数组）         | goods<em>id:商品 ID,attr</em>value:当前商品的参数值,add</em>price:浮动价格,attr<em>vals:预定义的参数值,attr</em>sel:手动输入，还是单选, |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>{
+    &quot;data&quot;: {
+        &quot;goods_id&quot;: 145,
+        &quot;goods_name&quot;: &quot;test_goods_name2&quot;,
+        &quot;goods_price&quot;: 20,
+        &quot;goods_number&quot;: 30,
+        &quot;goods_weight&quot;: 40,
+        &quot;goods_introduce&quot;: &quot;abc&quot;,
+        &quot;goods_big_logo&quot;: &quot;&quot;,
+        &quot;goods_small_logo&quot;: &quot;&quot;,
+        &quot;goods_state&quot;: 1,
+        &quot;add_time&quot;: 1512962370,
+        &quot;upd_time&quot;: 1512962370,
+        &quot;hot_mumber&quot;: 0,
+        &quot;is_promote&quot;: false,
+        &quot;pics&quot;: [
+            {
+                &quot;pics_id&quot;: 397,
+                &quot;goods_id&quot;: 145,
+                &quot;pics_big&quot;: &quot;uploads/goodspics/big_30f08d52c551ecb447277eae232304b8&quot;,
+                &quot;pics_mid&quot;: &quot;uploads/goodspics/mid_30f08d52c551ecb447277eae232304b8&quot;,
+                &quot;pics_sma&quot;: &quot;uploads/goodspics/sma_30f08d52c551ecb447277eae232304b8&quot;
+            }
+        ],
+        &quot;attrs&quot;: [
+            {
+                &quot;goods_id&quot;: 145,
+                &quot;attr_id&quot;: 15,
+                &quot;attr_value&quot;: &quot;ddd&quot;,
+                &quot;add_price&quot;: null,
+                &quot;attr_name&quot;: &quot;fffffff&quot;,
+                &quot;attr_sel&quot;: &quot;many&quot;,
+                &quot;attr_write&quot;: &quot;list&quot;,
+                &quot;attr_vals&quot;: &quot;&quot;
+            },
+            {
+                &quot;goods_id&quot;: 145,
+                &quot;attr_id&quot;: 15,
+                &quot;attr_value&quot;: &quot;eee&quot;,
+                &quot;add_price&quot;: null,
+                &quot;attr_name&quot;: &quot;fffffff&quot;,
+                &quot;attr_sel&quot;: &quot;many&quot;,
+                &quot;attr_write&quot;: &quot;list&quot;,
+                &quot;attr_vals&quot;: &quot;&quot;
+            }
+        ]
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;创建商品成功&quot;,
+        &quot;status&quot;: 201
+    }
+}</code></p>
+<h3>1.8.5. 删除商品</h3>
+<ul>
+<li>请求路径：goods/:id</li>
+<li>请求方法：delete</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名 | 参数说明 | 备注                  |
+| ------ | -------- | --------------------- |
+| id     | 商品 ID  | 不能为空<code>携带在url中</code> |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>{
+    &quot;data&quot;: null,
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;删除成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<p>###同步商品图片</p>
+<ul>
+<li>请求路径：goods/:id/pics</li>
+<li>请求方法：put</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名 | 参数说明     | 备注                                                         |
+| ------ | ------------ | ------------------------------------------------------------ |
+| id     | 商品 ID      | 不能为空<code>携带在url中</code>                                        |
+| pics   | 商品图片集合 | 如果有 pics<em>id 字段会保留该图片，如果没有 pics</em>id 但是有 pic 字段就会新生成图片数据 |</p>
+<ul>
+<li>请求数据</li>
+</ul>
+<p><code>;[
+  { pic: 'tmp_uploads/db28f6316835836e97653b5c75e418be.png' },
+  {
+    pics_id: 397,
+    goods_id: 145,
+    pics_big: 'uploads/goodspics/big_30f08d52c551ecb447277eae232304b8',
+    pics_mid: 'uploads/goodspics/mid_30f08d52c551ecb447277eae232304b8',
+    pics_sma: 'uploads/goodspics/sma_30f08d52c551ecb447277eae232304b8'
+  }
+]</code></p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>{
+    &quot;data&quot;: {
+        &quot;goods_id&quot;: 96,
+        &quot;goods_name&quot;: &quot;iphoneXX&quot;,
+        &quot;goods_price&quot;: 2,
+        &quot;goods_number&quot;: 22,
+        &quot;goods_weight&quot;: 22,
+        &quot;goods_introduce&quot;: null,
+        &quot;goods_big_logo&quot;: &quot;./uploads/goods/20171113/483a3b8e99e534ec3e4312dbbaee7c9d.jpg&quot;,
+        &quot;goods_small_logo&quot;: &quot;./uploads/goods/20171113/small_483a3b8e99e534ec3e4312dbbaee7c9d.jpg&quot;,
+        &quot;goods_state&quot;: 0,
+        &quot;is_del&quot;: &quot;1&quot;,
+        &quot;add_time&quot;: 1510045904,
+        &quot;upd_time&quot;: 1512635159,
+        &quot;delete_time&quot;: 1512635159,
+        &quot;hot_mumber&quot;: 0,
+        &quot;is_promote&quot;: false,
+        &quot;pics&quot;: [
+            {
+                &quot;pics_id&quot;: 383,
+                &quot;goods_id&quot;: 96,
+                &quot;pics_big&quot;: &quot;uploads/goodspics/big_6f5750132abd3f5b2b93dd722fcde653.jpg&quot;,
+                &quot;pics_mid&quot;: &quot;uploads/goodspics/mid_6f5750132abd3f5b2b93dd722fcde653.jpg&quot;,
+                &quot;pics_sma&quot;: &quot;uploads/goodspics/sma_6f5750132abd3f5b2b93dd722fcde653.jpg&quot;
+            }
+        ],
+        &quot;attrs&quot;: [
+            {
+                &quot;goods_id&quot;: 96,
+                &quot;attr_id&quot;: 15,
+                &quot;attr_value&quot;: &quot;eee&quot;,
+                &quot;add_price&quot;: null,
+                &quot;attr_name&quot;: &quot;fffffff&quot;,
+                &quot;attr_sel&quot;: &quot;many&quot;,
+                &quot;attr_write&quot;: &quot;list&quot;,
+                &quot;attr_vals&quot;: &quot;&quot;
+            },
+            {
+                &quot;goods_id&quot;: 96,
+                &quot;attr_id&quot;: 15,
+                &quot;attr_value&quot;: &quot;ddd&quot;,
+                &quot;add_price&quot;: null,
+                &quot;attr_name&quot;: &quot;fffffff&quot;,
+                &quot;attr_sel&quot;: &quot;many&quot;,
+                &quot;attr_write&quot;: &quot;list&quot;,
+                &quot;attr_vals&quot;: &quot;&quot;
+            }
+        ]
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;更新成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<p>###同步商品属性</p>
+<ul>
+<li>请求路径：goods/:id/attributes</li>
+<li>请求方法：put</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名 | 参数说明 | 备注                  |
+| ------ | -------- | --------------------- |
+| id     | 商品 ID  | 不能为空<code>携带在url中</code> |</p>
+<ul>
+<li>请求数据</li>
+</ul>
+<p><code>;[
+  {
+    attr_id: 15,
+    attr_value: 'ddd'
+  },
+  {
+    attr_id: 15,
+    attr_value: 'eee'
+  }
+]</code></p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>{
+    &quot;data&quot;: {
+        &quot;goods_id&quot;: 96,
+        &quot;goods_name&quot;: &quot;iphoneXX&quot;,
+        &quot;goods_price&quot;: 2,
+        &quot;goods_number&quot;: 22,
+        &quot;goods_weight&quot;: 22,
+        &quot;goods_introduce&quot;: null,
+        &quot;goods_big_logo&quot;: &quot;./uploads/goods/20171113/483a3b8e99e534ec3e4312dbbaee7c9d.jpg&quot;,
+        &quot;goods_small_logo&quot;: &quot;./uploads/goods/20171113/small_483a3b8e99e534ec3e4312dbbaee7c9d.jpg&quot;,
+        &quot;goods_state&quot;: 0,
+        &quot;is_del&quot;: &quot;1&quot;,
+        &quot;add_time&quot;: 1510045904,
+        &quot;upd_time&quot;: 1512635159,
+        &quot;delete_time&quot;: 1512635159,
+        &quot;hot_mumber&quot;: 0,
+        &quot;is_promote&quot;: false,
+        &quot;pics&quot;: [
+            {
+                &quot;pics_id&quot;: 383,
+                &quot;goods_id&quot;: 96,
+                &quot;pics_big&quot;: &quot;uploads/goodspics/big_6f5750132abd3f5b2b93dd722fcde653.jpg&quot;,
+                &quot;pics_mid&quot;: &quot;uploads/goodspics/mid_6f5750132abd3f5b2b93dd722fcde653.jpg&quot;,
+                &quot;pics_sma&quot;: &quot;uploads/goodspics/sma_6f5750132abd3f5b2b93dd722fcde653.jpg&quot;
+            }
+        ],
+        &quot;attrs&quot;: [
+            {
+                &quot;goods_id&quot;: 96,
+                &quot;attr_id&quot;: 15,
+                &quot;attr_value&quot;: &quot;eee&quot;,
+                &quot;add_price&quot;: null,
+                &quot;attr_name&quot;: &quot;fffffff&quot;,
+                &quot;attr_sel&quot;: &quot;many&quot;,
+                &quot;attr_write&quot;: &quot;list&quot;,
+                &quot;attr_vals&quot;: &quot;&quot;
+            },
+            {
+                &quot;goods_id&quot;: 96,
+                &quot;attr_id&quot;: 15,
+                &quot;attr_value&quot;: &quot;ddd&quot;,
+                &quot;add_price&quot;: null,
+                &quot;attr_name&quot;: &quot;fffffff&quot;,
+                &quot;attr_sel&quot;: &quot;many&quot;,
+                &quot;attr_write&quot;: &quot;list&quot;,
+                &quot;attr_vals&quot;: &quot;&quot;
+            }
+        ]
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;更新成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<p>###商品图片处理必须安装 GraphicsMagick</p>
+<ul>
+<li>linux</li>
+</ul>
+<p><code>apt-get install GraphicsMagick</code></p>
+<ul>
+<li>Mac OS X</li>
+</ul>
+<p><code>brew install GraphicsMagick</code></p>
+<ul>
+<li>Windows <a href="https://sourceforge.net/projects/graphicsmagick/files/graphicsmagick-binaries/1.3.27/GraphicsMagick-1.3.27-Q8-win64-dll.exe/download">点击下载</a></li>
+</ul>
+<h2>1.9. 图片上传</h2>
+<ul>
+<li>请求路径：upload</li>
+<li>请求方法：post</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名 | 参数说明 | 备注 |
+| ------ | -------- | ---- |
+| file   | 上传文件 |      |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>{
+    &quot;data&quot;: {
+        &quot;tmp_path&quot;: &quot;tmp_uploads/ccfc5179a914e94506bcbb7377e8985f.png&quot;,
+        &quot;url&quot;: &quot;http://127.0.0.1:8888tmp_uploads/ccfc5179a914e94506bcbb7377e8985f.png&quot;
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;上传成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<h2>1.10. 订单管理</h2>
+<h3>1.10.1. 订单数据列表</h3>
+<ul>
+<li>请求路径：orders</li>
+<li>请求方法：get</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名               | 参数说明        | 备注     |
+| -------------------- | --------------- | -------- |
+| query                | 查询参数        | 可以为空 |
+| pagenum              | 当前页码        | 不能为空 |
+| pagesize             | 每页显示条数    | 不能为空 |
+| user<em>id              | 用户 ID         | 可以为空 |
+| pay</em>status           | 支付状态        | 可以为空 |
+| is<em>send              | 是否发货        | 可以为空 |
+| order<em>fapiao</em>title   | ['个人','公司'] | 可以为空 |
+| order</em>fapiao<em>company | 公司名称        | 可以为空 |
+| order</em>fapiao<em>content | 发票内容        | 可以为空 |
+| consignee</em>addr       | 发货地址        | 可以为空 |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>{
+    &quot;data&quot;: {
+        &quot;total&quot;: 1,
+        &quot;pagenum&quot;: &quot;1&quot;,
+        &quot;goods&quot;: [
+            {
+                &quot;order_id&quot;: 47,
+                &quot;user_id&quot;: 133,
+                &quot;order_number&quot;: &quot;itcast-59e7502d7993d&quot;,
+                &quot;order_price&quot;: 322,
+                &quot;order_pay&quot;: &quot;1&quot;,
+                &quot;is_send&quot;: &quot;是&quot;,
+                &quot;trade_no&quot;: &quot;&quot;,
+                &quot;order_fapiao_title&quot;: &quot;个人&quot;,
+                &quot;order_fapiao_company&quot;: &quot;&quot;,
+                &quot;order_fapiao_content&quot;: &quot;办公用品&quot;,
+                &quot;consignee_addr&quot;: &quot;a:7:{s:6:\&quot;cgn_id\&quot;;i:1;s:7:\&quot;user_id\&quot;;i:133;s:8:\&quot;cgn_name\&quot;;s:9:\&quot;王二柱\&quot;;s:11:\&quot;cgn_address\&quot;;s:51:\&quot;北京市海淀区苏州街长远天地大厦305室\&quot;;s:7:\&quot;cgn_tel\&quot;;s:11:\&quot;13566771298\&quot;;s:8:\&quot;cgn_code\&quot;;s:6:\&quot;306810\&quot;;s:11:\&quot;delete_time\&quot;;N;}&quot;,
+                &quot;pay_status&quot;: &quot;1&quot;,
+                &quot;create_time&quot;: 1508331565,
+                &quot;update_time&quot;: 1508331565
+            }
+        ]
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;获取成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<h3>1.10.2. 修改订单状态</h3>
+<ul>
+<li>请求路径：orders/:id</li>
+<li>请求方法：put</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名       | 参数说明     | 备注                                       |
+| ------------ | ------------ | ------------------------------------------ |
+| id           | 订单 ID      | 不能为空<code>携带在url中</code>                      |
+| is<em>send      | 订单是否发货 | 1:已经发货，0:未发货                       |
+| order</em>pay    | 订单支付     | 支付方式 0 未支付 1 支付宝 2 微信 3 银行卡 |
+| order_price  | 订单价格     |                                            |
+| order<em>number | 订单数量     |                                            |
+| pay</em>status   | 支付状态     | 订单状态： 0 未付款、1 已付款              |</p>
+<ul>
+<li>
+请求数据说明
+<ul>
+<li>所有请求数据都是增量更新，如果参数不填写，就不会更新该字段</li>
+</ul>
+</li>
+<li>响应数据</li>
+</ul>
+<p><code>{
+    &quot;data&quot;: {
+        &quot;order_id&quot;: 67,
+        &quot;user_id&quot;: 1,
+        &quot;order_number&quot;: &quot;itcast-g7kmck71vjaujfgoi&quot;,
+        &quot;order_price&quot;: 20,
+        &quot;order_pay&quot;: &quot;0&quot;,
+        &quot;is_send&quot;: &quot;否&quot;,
+        &quot;trade_no&quot;: &quot;&quot;,
+        &quot;order_fapiao_title&quot;: &quot;个人&quot;,
+        &quot;order_fapiao_company&quot;: &quot;&quot;,
+        &quot;order_fapiao_content&quot;: &quot;&quot;,
+        &quot;consignee_addr&quot;: &quot;&quot;,
+        &quot;pay_status&quot;: &quot;0&quot;,
+        &quot;create_time&quot;: 1512533560,
+        &quot;update_time&quot;: 1512533560,
+        &quot;goods&quot;: [
+            {
+                &quot;id&quot;: 82,
+                &quot;order_id&quot;: 67,
+                &quot;goods_id&quot;: 96,
+                &quot;goods_price&quot;: 333,
+                &quot;goods_number&quot;: 2,
+                &quot;goods_total_price&quot;: 999
+            },
+            {
+                &quot;id&quot;: 83,
+                &quot;order_id&quot;: 67,
+                &quot;goods_id&quot;: 95,
+                &quot;goods_price&quot;: 666,
+                &quot;goods_number&quot;: 5,
+                &quot;goods_total_price&quot;: 999
+            }
+        ]
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;获取成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<h3>1.10.3. 查看订单详情</h3>
+<ul>
+<li>请求路径：orders/:id</li>
+<li>请求方法：get</li>
+<li>请求参数</li>
+</ul>
+<p>| 参数名 | 参数说明 | 备注                  |
+| ------ | -------- | --------------------- |
+| id     | 订单 ID  | 不能为空<code>携带在url中</code> |</p>
+<ul>
+<li>响应数据</li>
+</ul>
+<p><code>{
+    &quot;data&quot;: {
+        &quot;order_id&quot;: 67,
+        &quot;user_id&quot;: 1,
+        &quot;order_number&quot;: &quot;itcast-g7kmck71vjaujfgoi&quot;,
+        &quot;order_price&quot;: 20,
+        &quot;order_pay&quot;: &quot;0&quot;,
+        &quot;is_send&quot;: &quot;否&quot;,
+        &quot;trade_no&quot;: &quot;&quot;,
+        &quot;order_fapiao_title&quot;: &quot;个人&quot;,
+        &quot;order_fapiao_company&quot;: &quot;&quot;,
+        &quot;order_fapiao_content&quot;: &quot;&quot;,
+        &quot;consignee_addr&quot;: &quot;&quot;,
+        &quot;pay_status&quot;: &quot;0&quot;,
+        &quot;create_time&quot;: 1512533560,
+        &quot;update_time&quot;: 1512533560,
+        &quot;goods&quot;: [
+            {
+                &quot;id&quot;: 82,
+                &quot;order_id&quot;: 67,
+                &quot;goods_id&quot;: 96,
+                &quot;goods_price&quot;: 333,
+                &quot;goods_number&quot;: 2,
+                &quot;goods_total_price&quot;: 999
+            },
+            {
+                &quot;id&quot;: 83,
+                &quot;order_id&quot;: 67,
+                &quot;goods_id&quot;: 95,
+                &quot;goods_price&quot;: 666,
+                &quot;goods_number&quot;: 5,
+                &quot;goods_total_price&quot;: 999
+            }
+        ]
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;获取成功&quot;,
+        &quot;status&quot;: 200
+    }
+}</code></p>
+<h3>1.10.4. 修改地址</h3>
+<ol>
+<li><a href="https://github.com/iceyangcc/provinces-china">省市区/县联动效果 - 结合ElementUI的 el-cascader 组件</a></li>
+</ol>
+<h3>1.10.5. 查看物流信息</h3>
+<ul>
+<li>
+<p>请求路径：/kuaidi/:id</p>
+</li>
+<li>
+<p>请求方法：get</p>
+</li>
+<li>
+<p>供测试的物流单号：1106975712662</p>
+</li>
+<li>
+<p>响应数据：</p>
+</li>
+</ul>
+<p>```json
+  {
+    &quot;data&quot;: [
+      {
+        &quot;time&quot;: &quot;2018-05-10 09:39:00&quot;,
+        &quot;ftime&quot;: &quot;2018-05-10 09:39:00&quot;,
+        &quot;context&quot;: &quot;已签收,感谢使用顺丰,期待再次为您服务&quot;,
+        &quot;location&quot;: &quot;&quot;
+      },
+      {
+        &quot;time&quot;: &quot;2018-05-10 08:23:00&quot;,
+        &quot;ftime&quot;: &quot;2018-05-10 08:23:00&quot;,
+        &quot;context&quot;: &quot;[北京市]北京海淀育新小区营业点派件员 顺丰速运 95338正在为您派件&quot;,
+        &quot;location&quot;: &quot;&quot;
+      },
+      {
+        &quot;time&quot;: &quot;2018-05-10 07:32:00&quot;,
+        &quot;ftime&quot;: &quot;2018-05-10 07:32:00&quot;,
+        &quot;context&quot;: &quot;快件到达 [北京海淀育新小区营业点]&quot;,
+        &quot;location&quot;: &quot;&quot;
+      },
+      {
+        &quot;time&quot;: &quot;2018-05-10 02:03:00&quot;,
+        &quot;ftime&quot;: &quot;2018-05-10 02:03:00&quot;,
+        &quot;context&quot;: &quot;快件在[北京顺义集散中心]已装车,准备发往 [北京海淀育新小区营业点]&quot;,
+        &quot;location&quot;: &quot;&quot;
+      },
+      {
+        &quot;time&quot;: &quot;2018-05-09 23:05:00&quot;,
+        &quot;ftime&quot;: &quot;2018-05-09 23:05:00&quot;,
+        &quot;context&quot;: &quot;快件到达 [北京顺义集散中心]&quot;,
+        &quot;location&quot;: &quot;&quot;
+      },
+      {
+        &quot;time&quot;: &quot;2018-05-09 21:21:00&quot;,
+        &quot;ftime&quot;: &quot;2018-05-09 21:21:00&quot;,
+        &quot;context&quot;: &quot;快件在[北京宝胜营业点]已装车,准备发往 [北京顺义集散中心]&quot;,
+        &quot;location&quot;: &quot;&quot;
+      },
+      {
+        &quot;time&quot;: &quot;2018-05-09 13:07:00&quot;,
+        &quot;ftime&quot;: &quot;2018-05-09 13:07:00&quot;,
+        &quot;context&quot;: &quot;顺丰速运 已收取快件&quot;,
+        &quot;location&quot;: &quot;&quot;
+      },
+      {
+        &quot;time&quot;: &quot;2018-05-09 12:25:03&quot;,
+        &quot;ftime&quot;: &quot;2018-05-09 12:25:03&quot;,
+        &quot;context&quot;: &quot;卖家发货&quot;,
+        &quot;location&quot;: &quot;&quot;
+      },
+      {
+        &quot;time&quot;: &quot;2018-05-09 12:22:24&quot;,
+        &quot;ftime&quot;: &quot;2018-05-09 12:22:24&quot;,
+        &quot;context&quot;: &quot;您的订单将由HLA（北京海淀区清河中街店）门店安排发货。&quot;,
+        &quot;location&quot;: &quot;&quot;
+      },
+      {
+        &quot;time&quot;: &quot;2018-05-08 21:36:04&quot;,
+        &quot;ftime&quot;: &quot;2018-05-08 21:36:04&quot;,
+        &quot;context&quot;: &quot;商品已经下单&quot;,
+        &quot;location&quot;: &quot;&quot;
+      }
+    ],
+    &quot;meta&quot;: { &quot;status&quot;: 200, &quot;message&quot;: &quot;获取物流信息成功！&quot; }
+  }</p>
+<p>```</p>
+<h2>1.11. 数据统计</h2>
+<h3>1.11.1.  基于时间统计的折线图</h3>
+<ul>
+<li>
+<p>请求路径：reports/type/1</p>
+</li>
+<li>
+<p>请求方法：get</p>
+</li>
+<li>
+<p>响应数据</p>
+</li>
+<li>
+<p>需要合并的选项</p>
+</li>
+</ul>
+<p><code>js
+  options: {
+          title: {
+            text: '用户来源'
+          },
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+              type: 'cross',
+              label: {
+                backgroundColor: '#E9EEF3'
+              }
+            }
+          },
+          grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+          },
+          xAxis: [
+            {
+              boundaryGap: false
+            }
+          ],
+          yAxis: [
+            {
+              type: 'value'
+            }
+          ]
+        }</code></p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
